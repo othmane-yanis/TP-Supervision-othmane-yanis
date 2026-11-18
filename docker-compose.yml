@@ -1,0 +1,30 @@
+
+services:
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+
+  database:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: root123
+      MARIADB_DATABASE: supervision_db
+      MARIADB_USER: supervision
+      MARIADB_PASSWORD: supervision123
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

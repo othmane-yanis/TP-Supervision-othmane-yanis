@@ -1,0 +1,17 @@
+# Dépendances Node.js
+node_modules/
+
+# Informations confidentielles
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Configuration VS Code
+.vscode/
+
+# Fichiers système Windows
+Thumbs.db
+Desktop.ini
